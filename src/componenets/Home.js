@@ -9,6 +9,7 @@ import { editTodo } from "@/slices/todoSlice";
 import { shiftEdit } from "@/slices/todoSlice";
 import { completeTodo } from "@/slices/todoSlice";
 import { ToastContainer, toast } from 'react-toastify';
+import { reloadFun } from "@/slices/todoSlice";
 import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = () => {
@@ -21,12 +22,15 @@ const HomePage = () => {
   const [inputTodo, setinputTodo] = useState("");
 
   useEffect(() => {
+    setisLoading(true);
     dispatch(getTodos());
-    // dispatch(shiftEdit())
     setisLoading(false);
   }, []);
 
-
+  window.onload=()=>{
+    dispatch(getTodos())
+    dispatch(reloadFun())
+  }
 
 
   return (
@@ -83,6 +87,7 @@ const HomePage = () => {
                         onChange={() => dispatch(completeTodo(item))}
                         style={{ width: "30px", height: "20px" }}
                         defaultChecked={item.isCompleted}
+                        disabled={item.editMode}
                       />
 
                       {item.editMode ? (

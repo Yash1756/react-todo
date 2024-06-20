@@ -55,10 +55,22 @@ export const todoslice = createSlice({
       }
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
+    reloadFun:(state)=>{
+          const newarr = state.todos.map((item)=>{
+          return ({
+            ...item,
+            editMode:false
+          })
+          })
+          console.log(newarr)
+
+      localStorage.setItem("todos", JSON.stringify(newarr));
+
+    }
   },
 });
 
-export const { add, getTodos, deleteTodo, editTodo, shiftEdit, completeTodo } =
+export const { add, getTodos, deleteTodo, editTodo, shiftEdit, completeTodo,reloadFun } =
   todoslice.actions;
 
 export default todoslice.reducer;
