@@ -148,7 +148,7 @@ const HomePage = () => {
                           disabled={item.isCompleted ? "true" : false}
                           style={item.isCompleted ? { opacity: "0.5" } : {}}
                         >
-                          Edit
+                          Editt
                         </button>
                       )}
                       <button
