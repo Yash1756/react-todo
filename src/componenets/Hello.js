@@ -1,3 +1,3 @@
 console.log("Hello js")
-console.log("Logout")
+console.log("Logout btn")
 
